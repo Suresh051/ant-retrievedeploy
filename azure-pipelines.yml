@@ -38,14 +38,3 @@ steps:
 
 - script: |
     echo ***All Extract Successfull!!!***
-    echo ***Starting copying from VM to Repo****
-    git config --local user.email "myemail@gmail.com"
-    git config --local user.name "Rohit"
-    git config --local http.extraheader "AUTHORIZATION: bearer $(System.AccessToken)"
-    git add --all
-    git commit -m "commit after extract"
-    git remote rm origin
-    git remote add origin https://<<<REPO_PASSWORD>>>@<<<REPO_URL>>>
-    git push -u origin HEAD:master
-  displayName: 'Push to Repo'
-  condition: or(eq(variables['BUILD_TYPE'], 'retrieve'),eq(variables['BUILD_TYPE'], 'both'))
